@@ -1,16 +1,11 @@
 HTML
-
 Hi Mena
 How are you 
 Noce to meet you
-
 public Void AddTwoNumbers(){
 x=1;
-
 y=3;
-
 z=x+y;
-
 system.out.prinln(z)
-
 }
+above function is already tested and reviwed scucessfully 
