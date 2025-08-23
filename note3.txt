@@ -1,2 +1,1 @@
-Hi salma.
-How are you today?
+Java Script File
