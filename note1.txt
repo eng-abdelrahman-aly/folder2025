@@ -8,4 +8,6 @@ y=3;
 z=x+y;
 system.out.prinln(z)
 }
+
+
 above function is already tested and reviwed scucessfully 
