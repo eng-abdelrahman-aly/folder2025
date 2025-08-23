@@ -8,3 +8,5 @@ y=3;
 z=x+y;
 system.out.prinln(z)
 }
+
+this function is tested sucessfullyyyyyyy
