@@ -1,0 +1,35 @@
+# Docker
+# Build a Docker image
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+trigger:
+- main
+
+pool:
+  name: Default
+
+jobs:
+- job: FirstJob
+  displayName: "Run First Script"
+  steps:
+  - script: |
+      echo "Hello from Job 1"
+      echo "Running custom script logic here..."
+    displayName: "Execute Script 1"
+
+- job: SecondJob
+  displayName: "Run Second Script and Build Docker"
+  dependsOn: FirstJob
+  steps:
+  - script: |
+
+      echo "Hello from Job 2"
+      echo "Running another script..."
+    displayName: "Execute Script 2"
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'docker'
+    repository: 'aahmed0900/hello-img'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
