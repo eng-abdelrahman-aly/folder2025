@@ -1,12 +1,8 @@
-# Docker
-# Build a Docker image
-# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
-
 trigger:
-- main
+- main   # adjust to your branch name
 
 pool:
-  name: Default
+  name: Default   # your agent pool
 
 jobs:
 - job: FirstJob
@@ -18,18 +14,20 @@ jobs:
     displayName: "Execute Script 1"
 
 - job: SecondJob
-  displayName: "Run Second Script and Build Docker"
+  displayName: "Run Second Script and Build+Push Docker"
   dependsOn: FirstJob
   steps:
   - script: |
-
       echo "Hello from Job 2"
       echo "Running another script..."
     displayName: "Execute Script 2"
 
-- task: Docker@2
-  inputs:
-    containerRegistry: 'docker'
-    repository: 'aahmed0900/hello-img'
-    command: 'buildAndPush'
-    Dockerfile: '**/Dockerfile'
+  - task: Docker@2
+    displayName: "Build and Push Docker Image"
+    inputs:
+      command: buildAndPush
+      containerRegistry: docker        # name of your service connection in Azure DevOps
+      repository: aahmed0900/hello-img # Docker Hub repo (username/repo-name)
+      dockerfile: Dockerfile           # path to Dockerfile in repo
+      tags: |
+        latest
