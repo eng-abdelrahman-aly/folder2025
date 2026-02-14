@@ -15,7 +15,6 @@ jobs:
 
 - job: SecondJob
   displayName: "Run Second Script and Build+Push Docker"
-  dependsOn: FirstJob
   steps:
   - script: |
       echo "Hello from Job 2"
